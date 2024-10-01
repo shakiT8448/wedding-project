@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    
   </head>
   <body>
     <main>
@@ -31,7 +32,6 @@
       <div class="menu">
         <nav>
           <ul>
-            <!--link ke midam be ghesmat haye mokhtalef site nav nemizare kamel maloom she oon ghesmat-->
             <li><a href="#home-section">HOME</a></li>
             <li><a href="#invite-section">INVITE</a></li>
             <li><a href="#timings-section">TIMINGS</a></li>
@@ -88,14 +88,32 @@
       <div class="timings-main-container">
         <div class="timings-container_left-section">
           <div class="schedule-containers">
+          <div class="schedule-containers_img">
             <img src="Images/timeline_01.jpg" alt="wedding time picture">
-            <h3>1pm – 3pm Wedding</h3>
+            
+            <div class="schedule-containers_img_overlay">
+             <img src="Images/link.svg" class="schedule-containers_img_overlay-icon-link">
+             <img src="Images/search.svg" class="schedule-containers_img_overlay-icon-search">
+            </div>
+          </div>
+              <div class="time">
+                <a>1pm – 3pm Wedding</a>
+                <div class="triangle-left"></div>
+            </div>
           </div>
           <div class="schedule-containers">
-            <img src="Images/timeline_01.jpg" alt="wedding time picture">
-            <h3>1pm – 3pm Wedding</h3>
+            <div class="schedule-containers_img"><img src="Images/timeline_02.jpg" alt="wedding time picture">
+              <div class="schedule-containers_img_overlay">
+                <img src="Images/link.svg" class="schedule-containers_img_overlay-icon-link">
+                <img src="Images/search.svg" class="schedule-containers_img_overlay-icon-search">
+               </div>
+            </div>
+              <div class="time">
+                <a>3pm – 4pm Photos</a>
+                <div class="triangle-left"></div>
+            </div>
           </div>
-        </div>
+         </div>
         <div class="timings-container_middle-section-container">
           <div class="timings-container_middle-line">
             <div class="timings-container_middle-section-circle-top"></div>
@@ -105,12 +123,29 @@
         
         <div class="timings-container_right-section">
           <div class="schedule-containers">
-            <img src="Images/timeline_01.jpg" alt="wedding time picture">
-            <h3>1pm – 3pm Wedding</h3>
+            <div class="schedule-containers_img"><img src="Images/timeline_03.jpg" alt="wedding time picture">
+              <div class="schedule-containers_img_overlay">
+                <img src="Images/link.svg" class="schedule-containers_img_overlay-icon-link">
+                <img src="Images/search.svg" class="schedule-containers_img_overlay-icon-search">
+               </div>
+              </div>
+            <div class="time">
+              <a>4pm – 7pm Dinner</a>
+              <div class="triangle-right"></div>
+            </div>
           </div>
           <div class="schedule-containers">
-            <img src="Images/timeline_01.jpg" alt="wedding time picture">
-            <h3>1pm – 3pm Wedding</h3>
+            <div class="schedule-containers_img"><img src="Images/timeline_04.jpg" alt="wedding time picture">
+              <div class="schedule-containers_img_overlay">
+                <img src="Images/link.svg" class="schedule-containers_img_overlay-icon-link">
+                <img src="Images/search.svg" class="schedule-containers_img_overlay-icon-search">
+               </div>
+            </div>
+              <div class="time">
+                <a>7pm – 11pm Reception</a>
+                <div class="triangle-right"></div>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -191,7 +226,6 @@
             <div class="stories-image-container no-image-mobile">
               <img
                 src="Images/circles_02.jpg"
-                class="stories-image-container-left"
               />
             </div>
           </div>
@@ -226,7 +260,6 @@
             <div class="stories-image-container no-image-mobile">
               <img
                 src="Images/circles_04.jpg"
-                class="stories-image-container-left"
               />
             </div>
          </div>
@@ -301,7 +334,7 @@
           <button>I ACCEPT</button>
         </div>
       </div>
-      <div class="rsvp-main-container">
+      <div class="rsvp-main-container" id="rsvp-section">
         <div class="rsvp-paragraph-section">
           <img src="Images/rose.webp" alt="rose-picture" />
           <h2 class="titles-h2">RSVP</h2>
@@ -312,7 +345,7 @@
             proident.
           </p>
         </div>
-        <form id="rsvp-section">
+        <form>
           <input type="text" placeholder="Name (required)">
           <input type="email" placeholder="Email (required)">
           <input type="number" placeholder="How many people attending?">

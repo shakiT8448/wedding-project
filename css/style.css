@@ -4,6 +4,9 @@
   padding: 0;
   margin: 0;
   block-size: border-box;
+  content: "";
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
 }
 :root {
   --main-color: #90a8ad;
@@ -60,6 +63,7 @@ main {
   background-color: var(--main-color);
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 nav {
   display: flex;
@@ -120,8 +124,7 @@ nav ul li a:hover {
   padding: 0 15px;
   border-left: 2px solid rgba(97, 93, 93, 0.384);
 }
-/*inja khate border pak nemishe*/
-.invite-links-container:first-child {
+.invite-links-container a:first-child {
   border-left: none;
 }
 .invite-banner {
@@ -167,7 +170,6 @@ hr {
 .above-timings-section {
   text-align: center;
   position: relative;
-  z-index: -10;
 }
 .above-timings-section img {
   width: 70px;
@@ -198,6 +200,7 @@ hr {
 .timings-main-container {
   width: 60%;
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
   margin: 0 auto;
@@ -208,33 +211,93 @@ hr {
   width: 38%;
 }
 .schedule-containers {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  position: relative;
 }
 .schedule-containers img {
   width: 100%;
-  height: 190px;
-  padding-bottom: 0;
+  height: auto;
+  display: block;
 }
-.schedule-containers h3 {
-  height: 70px;
-  width: 99%;
-  font-size: 22px;
-  color: var(--reddish);
+.schedule-containers_img {
+  position: relative;
+}
+.schedule-containers_img_overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #b66e64d5;
+}
+.schedule-containers_img:hover .schedule-containers_img_overlay {
+  opacity: 1;
+}
+.schedule-containers_img_overlay img {
+  color: white;
+  width: 30px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  filter: invert(97%) sepia(7%) saturate(228%) hue-rotate(44deg)
+    brightness(119%) contrast(100%);
+}
+.schedule-containers_img_overlay-icon-search {
+  left: 60%;
+}
+.schedule-containers_img_overlay-icon-link {
+  left: 40%;
+}
+.schedule-containers .time {
+  height: 85px;
+  width: 99.5%;
   border: 1px solid #c0c0c0;
-  border-bottom: 5px solid #c0c0c0;
+  border-bottom: 3px solid #c0c0c0;
+  position: relative;
+  top: 100%;
   text-align: center;
-  line-height: 70px;
+  line-height: 85px;
+  font-size: 22px;
+}
+.schedule-containers .time a {
+  color: var(--reddish);
+  transition: var(--default-transition);
+}
+.schedule-containers .time a:hover {
+  color: var(--main-color);
+  cursor: pointer;
+}
+.triangle-left,
+.triangle-right {
+  width: 15px;
+  height: 15px;
+  background-color: #c0c0c0;
+  position: absolute;
+  transform: rotate(45deg);
+  top: 44%;
+  z-index: -5;
+}
+.triangle-left {
+  left: 97.8%;
+}
+.triangle-right {
+  left: -2.7%;
 }
 .timings-container_middle-section-container {
   width: 15%;
   display: flex;
   justify-content: center;
-  z-index: -15;
 }
 .timings-container_middle-line {
-  height: 630px;
+  height: 650px;
   position: relative;
 }
 .timings-container_middle-section-circle-top,
@@ -244,10 +307,13 @@ hr {
   height: 10px;
   border-radius: 50%;
   background-color: #c0c0c0;
-  left: -160%;
+  left: -200%;
 }
 .timings-container_middle-section-circle-top {
-  top: 40%;
+  top: 36.5%;
+}
+.timings-container_middle-section-circle-bottom {
+  top: 86.5%;
 }
 .wedding-countdown-container {
   margin: 0 auto 140px;
@@ -335,27 +401,24 @@ hr {
   width: 60%;
   display: flex;
   margin-bottom: 50px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 .stories-image-container {
-  width: 30%;
+  width: 20%;
+  height: 150px;
   overflow: hidden;
-  position: relative;
-  z-index: -1;
-}
-/*inja baraye inke aks ha naran rooye nav z-index dadam vali dige transition va transform ro nemigire*/
-.stories-image-container img {
-  width: 70%;
-  height: 160px;
+  margin: 0 10px;
   border-radius: 50%;
-  transition: var(--default-transition);
+}
+.stories-image-container img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s;
+  transform: scale(1.2, 1.2);
 }
 .stories-image-container img:hover {
-  transform: scale(0.8, 0.8);
-}
-.stories-image-container-left {
-  position: absolute;
-  left: 30%;
+  transform: scale(1, 1);
 }
 .stories-paragraph-container {
   width: 70%;
@@ -379,25 +442,27 @@ hr {
 .gallery-container {
   width: 100%;
   height: 1150px;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 80px;
 }
 .gallery-images-container {
   width: 90%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .gallery-image-box {
-  width: 33%;
-  height: 30vh;
-  margin-bottom: 220px;
+  width: 30%;
+  height: 380px;
+  margin: 0 20px 40px;
   transition: var(--default-transition);
 }
-/*inja vaghti hover mikonam nemidoonam chera box shadow yek tike ezafe dare ke har kari kardam azz bein naraft va mire rooye nav*/
+.gallery-image-box img {
+  width: 100%;
+  height: 100%;
+}
 .gallery-image-box:hover {
   transform: scale(1.02, 1.02);
   box-shadow: 0 0 12px grey;
@@ -595,15 +660,33 @@ footer p a:hover {
   color: transparent;
 }
 @media (max-width: 768px) {
-  .header-banner {
+  .header-banner,
+  nav ul li a,
+  .no-image-mobile {
     display: none;
   }
-  nav ul li a {
+  .above-timings-section img,
+  .small-line-between-comment-icon-july2021,
+  .timings-container_middle-line,
+  .triangle-left,
+  .triangle-right {
     display: none;
   }
+  .above-timings-section h4 {
+    position: static;
+    margin: 0 auto;
+  }
+  .timings-main-container {
+    width: 80%;
+    gap: 0;
+  }
+  .timings-container_left-section,
+  .timings-container_right-section {
+    width: 42%;
+  }
+
   .wedding-countdown-container {
     height: 270px;
-    flex-wrap: wrap;
     max-width: 90%;
     justify-content: center;
     align-content: center;
@@ -614,37 +697,34 @@ footer p a:hover {
     padding: 8px;
   }
   .wedding-countdown-container ul {
-    justify-content: space-around;
-    flex-wrap: wrap;
     width: 60%;
   }
   .wedding-countdown-container ul li {
     width: 40%;
     padding: 9px 5px;
     margin-bottom: 10px;
-    text-align: center;
   }
-  .venue-main-container {
+  .wedding-countdown-container,
+  .venue-main-container,
+  .wedding-countdown-container ul {
     flex-wrap: wrap;
   }
-  .venue-paragraph-container {
+  .venue-paragraph-container,
+  .venue-image-container {
     width: 100%;
   }
   .venue-image-container {
-    width: 100%;
     height: 400px;
     margin-bottom: 400px;
   }
   .story-main-container {
     margin-top: 950px;
     text-align: center;
-    height: 3000px;
-  }
-  .no-image-mobile {
-    display: none;
+    height: 3300px;
+    flex-wrap: wrap;
   }
   .stories-image-container {
-    width: 100%;
+    width: 80%;
   }
   .stories-paragraph-container {
     width: 100%;
@@ -695,5 +775,11 @@ footer p a:hover {
   }
   footer {
     height: 300px;
+  }
+}
+@media (max-width: 560px) {
+  .timings-container_left-section,
+  .timings-container_right-section {
+    width: 100%;
   }
 }
